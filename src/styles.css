@@ -1,6 +1,16 @@
 @import "tailwindcss";
 
 :root {
+  --bg: #050505;
+  --bg2: #0D0D0D;
+  --card: #111111;
+  --card2: #181818;
+  --red: #D61F26;
+  --red-h: #B7181E;
+  --border: rgba(255,255,255,0.08);
+  --muted: rgba(255,255,255,0.4);
+  --sub: rgba(255,255,255,0.65);
+  /* Legacy */
   --ct-navy: #1B3A6B;
   --ct-gold: #C5A028;
   --ct-pink: #FFE4EA;
@@ -43,7 +53,43 @@
   }
 }
 
-/* ── Timesheet styles ─────────────────────────────────── */
+/* ── Animations ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out both;
+}
+
+/* ── Timesheet styles (preserved for print functionality) ── */
 
 .ts-page {
   background-color: #FFE4EA;
@@ -100,4 +146,23 @@
 
 .ts-row {
   height: 15pt;
+}
+
+/* ── Scrollbar styling for dark mode ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.22);
 }
